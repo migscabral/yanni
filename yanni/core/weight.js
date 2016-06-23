@@ -35,6 +35,16 @@ class Weight {
   }
 
   /**
+  * Replaces the current weight value with the given input. Save current value as previous value.
+  * @param {decimal} [value] - The value to replace the current weight value.
+  *
+  **/
+  getValues() {
+    this.previousValue = this.value;
+    this.value = value;
+  }
+
+  /**
   * Set a random weight. Save current value to previous value.
   *
   **/
