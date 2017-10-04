@@ -1,0 +1,41 @@
+{
+  "name": "yanni",
+  "version": "0.0.1",
+  "description": "Yet Another Neural Network Implementation. Neural network library written in JS.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jasmine --config=jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/migscabral/yanni.git"
+  },
+  "keywords": [
+    "neural network",
+    "machine learning",
+    "artificial intelligence",
+    "simulation"
+  ],
+  "author": "Miguel Cabral",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/migscabral/yanni/issues"
+  },
+  "homepage": "https://github.com/migscabral/yanni#readme",  
+  "devDependencies": {
+    "@types/d3": "^4.10.0",
+    "@types/jasmine": "^2.5.54",
+    "http-server": "^0.9.0",
+    "jasmine": "^2.8.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "nodemon": "^1.12.1",
+    "remap-istanbul": "^0.8.4",
+    "typescript": "^2.5.1"
+  },
+  "dependencies": {}
+}
