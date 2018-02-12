@@ -8,6 +8,8 @@ export class Weight {
     private _value: number;
     private _previousValue: number;
     private _nextValue: number;
+    private _stepUpdate: boolean;
+    private _hasUpdated: boolean;
 
     /**
     * Default constructor.
@@ -34,7 +36,7 @@ export class Weight {
     * @param {number} value - The value to replace the current weight value.
     *
     **/
-    set value(value) {
+    set value(value: number) {
         this._nextValue = value;
     }
 
@@ -66,6 +68,31 @@ export class Weight {
     }
 
     /**
+     * Returns true if the weight will update at this step.
+     * @return {boolean}
+     */
+    get willUpdate() : boolean {
+        return this._stepUpdate;
+    }
+
+    /**
+     * Set to true so that the weight will update at this step.
+     * @param {boolean} willUpdate - flag to set if the weight will update or not.
+     * 
+     */
+    set willUpdate(willUpdate: boolean) {
+        this._stepUpdate = willUpdate;
+    }
+
+    /**
+     * Returns true if the weight has been updated at this step.
+     * @return {boolean}
+     */
+    get hasUpdated() : boolean {
+        return this._hasUpdated;
+    }
+
+    /**
     * Set a random weight.
     * 
     **/
@@ -93,8 +120,14 @@ export class Weight {
      * 
      */
     public update() {
-        this._previousValue = this._value;
-        this._value = this._nextValue;
-        this._nextValue = null;
+        if(this._stepUpdate) {
+            this._previousValue = this._value;
+            this._value = this._nextValue;
+            this._nextValue = null;
+            this._hasUpdated = true;
+        }
+        else {
+            this._hasUpdated = false;
+        }
     }
 }

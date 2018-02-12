@@ -1,6 +1,6 @@
-import {Connection} from '../yanni/core/Connection'
+// import {Connection} from '../yanni/core/Connection'
 
-describe('Connection', function() {
-    let Connection
-});
+// describe('Connection', function() {
+//     let conn = new Connection();
+// });
 

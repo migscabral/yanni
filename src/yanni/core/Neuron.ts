@@ -7,7 +7,7 @@ import {Connection} from './Connection';
 import {InputFunction} from './input-function/InputFunction';
 import {ActivationFunction} from './activation-function/ActivationFunction';
 
-class Neuron {
+export class Neuron {
 
     private _inputConnections: Array<Connection>;
     private _outputConnections: Array<Connection>;
@@ -28,28 +28,30 @@ class Neuron {
         this._inputFunction = inputFunction;
         this._activationFunction = activationFunction;
         this._stepActivate = true;
-        this._hasActivated = true;
+        this._hasActivated = false;
     }
 
-    public activate() {
-        if(this.stepActivate) {
-            if(this.inputConnections !== undefined && !(this.inputConnections) && Array.isArray(this.inputConnections)) {
-                if(this.inputFunction !== undefined && this.inputFunction === InputFunction) {
-                    this.netInput = this.inputFunction.compute(inputConnections);
-                }
-                else {
-                    //TODO: throw exception for unset inputFunction
-                }
-            }
-            else {
-                //TODO: throw exception for unset inputConnections
-            }
-        }
-        else {
-            return null; //No op
-        }
+    public activate() : number {
+        // if(this._stepActivate) {
+        //     if(this._inputConnections !== undefined && !(this._inputConnections) && Array.isArray(this._inputConnections)) {
+        //         if(this._inputFunction !== undefined && this._inputFunction instanceof InputFunction) {
+        //             this._netInput = this._inputFunction.compute(this._inputConnections);
+        //             this._output = this._activationFunction.compute(this._netInput);
+        //             this._hasActivated = true;
+        //         }
+        //         else {
+        //             //TODO: throw exception for unset inputFunction
+        //         }
+        //     }
+        //     else {
+        //         //TODO: throw exception for unset inputConnections
+        //     }
+        // }
+        // else {
+        //     return null; //No op
+        // }
 
-        return this.output = this.activationFunction.compute(this.netInput);
+        return this._output;
     }
 
     public addInputConnection() {
@@ -63,15 +65,28 @@ class Neuron {
     }
 
     public resetStep(stepActivate : boolean = true) {
-        this.stepActivate = stepActivate;
-        this.hasActivated = false;
+        this._stepActivate = stepActivate;
+        this._hasActivated = false;
     }
 
-    public getOutput(): number {
-        return this.output;
+    get output(): number {
+        return this._output;
     }
 
-    public learn() {
-        
+    get inputConnections(): Array<Connection> {
+        return this._inputConnections;
     }
+
+    get outputConnections(): Array<Connection> {
+        return this._outputConnections;
+    }
+
+    set error(err: number) {
+        this._error = err;
+    }
+
+    get error(): number {
+        return this._error;
+    }
+
 }

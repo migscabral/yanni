@@ -4,7 +4,11 @@
   "description": "Yet Another Neural Network Implementation. Neural network library written in JS.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "bundle": "catw node_modules/d3/build/d3.min.js > dist/lib.js",
+    "build:ts": "tsc",
+    "build:view": "browserify src/yanni/sandbox/View.ts -p [tsify] > dist/view.js",
+    "build:html": "cpx \"src/**/*.{html, png, jpg}\" dist",
+    "build": "npm run bundle && npm run build:ts && npm run build:view && npm run build:html",
     "test": "jasmine --config=jasmine.json"
   },
   "repository": {
@@ -22,10 +26,15 @@
   "bugs": {
     "url": "https://github.com/migscabral/yanni/issues"
   },
-  "homepage": "https://github.com/migscabral/yanni#readme",  
+  "homepage": "https://github.com/migscabral/yanni#readme",
   "devDependencies": {
-    "@types/d3": "^4.10.0",
+    "@types/d3": "^4.11.0",
     "@types/jasmine": "^2.5.54",
+    "@types/mathjs": "0.0.35",
+    "browserify": "^14.5.0",
+    "catw": "^1.0.1",
+    "cpx": "^1.5.0",
+    "d3": "^4.11.0",
     "http-server": "^0.9.0",
     "jasmine": "^2.8.0",
     "jasmine-core": "^2.8.0",
@@ -33,8 +42,10 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
+    "mathjs": "^3.16.5",
     "nodemon": "^1.12.1",
     "remap-istanbul": "^0.8.4",
+    "tsify": "^3.0.3",
     "typescript": "^2.5.1"
   },
   "dependencies": {}

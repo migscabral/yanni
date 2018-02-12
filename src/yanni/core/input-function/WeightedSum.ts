@@ -1,4 +1,7 @@
-namespace InputFunction {
+import {InputFunction} from './InputFunction';
+import {Connection} from '../Connection';
+
+namespace InputFunctions {
 
     export class WeightedSum implements InputFunction {
 

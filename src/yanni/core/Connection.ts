@@ -4,6 +4,7 @@
  */
 
 import {Weight} from './Weight';
+import {Neuron} from './Neuron';
 
 export class Connection {
 
@@ -36,7 +37,7 @@ export class Connection {
      * 
      */
     public input(): number {
-        return this._neuronFrom.getOutput();
+        return this._neuronFrom.output;
     }
 
     /**
@@ -45,7 +46,7 @@ export class Connection {
      * 
      */
     public output(): number {
-        return this._neuronFrom.getOutput();
+        return this._neuronFrom.output;
     }
 
     /**
@@ -54,7 +55,7 @@ export class Connection {
      * 
      */
     public weightedOutput(): number{
-        return this._neuronFrom.getOutput() * this._weight.value;
+        return this._neuronFrom.output * this._weight.value;
     }
     
     /**

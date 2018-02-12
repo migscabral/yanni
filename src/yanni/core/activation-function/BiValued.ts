@@ -1,7 +1,9 @@
+import {ActivationFunction} from "./ActivationFunction";
+
 /*
 *   For bi-valued functions (Signed (1,-1), Binary (0, 1), Step (hi, lo))
 */
-class BiValued implements ActivationFunction {
+export class BiValued implements ActivationFunction {
 
     private _threshold: number;
     private _hi: number;
